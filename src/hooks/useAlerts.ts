@@ -15,10 +15,16 @@ export function useAlerts() {
       if (Math.random() > 0.7) {
         const alertTypes: Alert['type'][] = ['overcrowding', 'missing', 'unauthorized', 'late'];
         const messages = {
-          overcrowding: 'Zone capacity exceeded in Meeting Rooms',
-          missing: 'Employee not detected in expected zone',
-          unauthorized: 'Badge scan rejected at restricted area',
-          late: 'New late arrival detected',
+          overcrowding: 'Overcrowding detected in Production Floor A - Safety risk',
+          missing: 'AI Verification Failure - Suspicious check-in attempt detected',
+          unauthorized: 'Attendance fraud detected - Badge used without facial match',
+          late: 'Late arrival: AI-verified check-in 45 minutes after shift start',
+        };
+        const severityMap = {
+          overcrowding: 'medium' as const,
+          missing: 'high' as const,
+          unauthorized: 'high' as const,
+          late: 'low' as const,
         };
         const type = alertTypes[Math.floor(Math.random() * alertTypes.length)];
         
@@ -26,7 +32,7 @@ export function useAlerts() {
           id: Date.now().toString(),
           type,
           message: messages[type],
-          severity: type === 'unauthorized' ? 'high' : type === 'overcrowding' ? 'medium' : 'low',
+          severity: severityMap[type],
           timestamp: new Date(),
           resolved: false,
         };
