@@ -79,11 +79,14 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           </div>
           {!collapsed && (
             <div className="flex flex-col">
-              <span className="font-bold text-lg text-sidebar-accent-foreground">
-                Pointy DZ
+              <span className="font-bold text-lg text-sidebar-accent-foreground flex items-center gap-2">
+                Pointy DZ 🇩🇿
               </span>
               <span className="text-xs text-sidebar-foreground/60">
                 AI-Verified Attendance
+              </span>
+              <span className="text-[10px] text-green-600 font-medium mt-1">
+                Made for Algerian Businesses
               </span>
             </div>
           )}
@@ -171,7 +174,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
               <span className="text-xs font-medium text-green-700">
-                AI Verification Active
+                AI Active • 25K+ Enterprises
+              </span>
+            </div>
+            <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200">
+              <span className="text-xs font-medium text-purple-700">
+                🇩🇿 Algerian Compliant
               </span>
             </div>
             <div className="hidden lg:flex items-center gap-2 text-xs text-muted-foreground">
