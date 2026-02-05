@@ -70,25 +70,61 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Logo */}
         <div
           className={cn(
-            "h-16 flex items-center border-b border-sidebar-border px-4",
-            collapsed ? "justify-center" : "gap-3",
+            "flex items-center border-b border-sidebar-border transition-all duration-300",
+            collapsed
+              ? "h-20 justify-center py-3 px-2"
+              : "h-24 gap-4 px-4 py-3",
           )}
         >
-          <div className="h-9 w-9 rounded-lg gradient-primary flex items-center justify-center shrink-0">
-            <Radar className="h-5 w-5 text-primary-foreground" />
-          </div>
-          {!collapsed && (
-            <div className="flex flex-col">
-              <span className="font-bold text-lg text-sidebar-accent-foreground flex items-center gap-2">
-                Pointy DZ 🇩🇿
-              </span>
-              <span className="text-xs text-sidebar-foreground/60">
-                AI-Verified Attendance
-              </span>
-              <span className="text-[10px] text-green-600 font-medium mt-1">
-                Made for Algerian Businesses
-              </span>
+          {collapsed ? (
+            <div className="relative group cursor-pointer">
+              {/* Animated pulsing ring */}
+              <div className="absolute inset-0 animate-pulse">
+                <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-500 rounded-xl opacity-20 blur-lg"></div>
+              </div>
+              {/* Outer glow */}
+              <div className="absolute -inset-2 bg-gradient-to-br from-purple-500/50 via-purple-600/30 to-blue-500/20 rounded-xl blur-xl transition-all duration-500 opacity-60"></div>
+              {/* Logo container */}
+              <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-white shadow-xl ring-[2px] ring-purple-500/50 transition-all duration-300">
+                <img
+                  src="/logo.jpg"
+                  alt="Pointy Logo"
+                  className="relative w-full h-full object-contain p-2"
+                />
+              </div>
             </div>
+          ) : (
+            <>
+              <div className="relative shrink-0 group cursor-pointer">
+                {/* Animated pulsing ring */}
+                <div className="absolute inset-0 animate-pulse">
+                  <div className="absolute -inset-3 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-500 rounded-2xl opacity-20 blur-xl"></div>
+                </div>
+                {/* Outer glow */}
+                <div className="absolute -inset-3 bg-gradient-to-br from-purple-500/50 via-purple-600/30 to-blue-500/20 rounded-2xl blur-2xl transition-all duration-500 opacity-60"></div>
+                {/* Logo container */}
+                <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white shadow-xl ring-[3px] ring-purple-500/50 transition-all duration-300">
+                  <img
+                    src="/logo.jpg"
+                    alt="Pointy Logo"
+                    className="relative w-full h-full object-contain p-2.5"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col justify-center min-w-0 gap-0.5">
+                <h1 className="font-bold text-2xl text-purple-400 flex items-center gap-2 leading-tight">
+                  Pointy
+                  <span className="text-xl">🇩🇿</span>
+                </h1>
+                <p className="text-[13px] text-purple-200/90 font-medium leading-tight">
+                  AI-Verified Attendance
+                </p>
+                <p className="text-[11px] text-green-400 font-semibold mt-0.5 flex items-center gap-1.5 leading-tight">
+                  <span className="inline-flex w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                  Made for Algerian Businesses
+                </p>
+              </div>
+            </>
           )}
         </div>
 
